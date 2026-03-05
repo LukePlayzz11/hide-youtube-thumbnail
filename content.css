@@ -1,0 +1,250 @@
+/* Remove thumbnail slots completely for cleaner layout */
+
+/* Core thumbnail removal but hides the thumbnail slot so it looks cleaner */
+/* Shared thumbnail hiding class for maintainability */
+.hide-thumbnail {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Apply shared class to all relevant thumbnail elements */
+/* Consolidated thumbnail hiding for all video renderers */
+ytd-thumbnail {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+ytd-grid-video-renderer,
+ytd-video-renderer,
+ytd-compact-video-renderer {
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s !important;
+  max-width: 400px !important;
+  width: auto !important;
+}
+
+ytd-rich-item-renderer:hover,
+ytd-grid-video-renderer:hover,
+ytd-video-renderer:hover,
+ytd-compact-video-renderer:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Show metadata and channel info with smaller font */
+#metadata-line,
+#metadata mdspan,
+ytd-video-meta-block {
+  font-size: 12px !important;
+  opacity: 0.7 !important;
+  line-height: 1.3 !important;
+}
+
+/* Title styling - single line with truncation */
+#video-title,
+ytd-video-primary-info-renderer #title,
+ytd-video-renderer #video-title-link,
+ytd-rich-item-renderer a#video-title,
+ytd-grid-video-renderer #video-title,
+.yt-simple-endpoint.inline {
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 13px !important;
+  max-width: 100% !important;
+}
+
+/* Minimize compact video renderers */
+ytd-compact-video-renderer {
+  padding: 2px 4px !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+/* Clean up watch page sidebar */
+#secondary ytd-compact-video-renderer {
+  padding: 2px 4px !important;
+  margin-bottom: 0 !important;
+}
+
+/* Ensure single line layout */
+ytd-grid-video-renderer,
+ytd-rich-item-renderer {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  min-height: auto !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+ytd-video-renderer,
+ytd-compact-video-renderer {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: auto !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+/* Improve rich grid layout */
+ytd-rich-grid-media {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ytd-rich-grid-renderer {
+  grid-gap: 4px 4px !important;
+}
+
+/* Collapse layouts to single column */
+[grid-columns="auto"] {
+  grid-auto-columns: auto !important;
+}
+
+/* Home page grid layout - hide thumbnail containers */
+ytd-grid-video-renderer,
+ytd-rich-item-renderer {
+  --yt-thumbnail-width: 0 !important;
+  --yt-thumbnail-height: 0 !important;
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+
+/* Search results and playlists */
+ytd-video-renderer,
+ytd-playlist-video-renderer,
+ytd-playlist-renderer {
+  --yt-thumbnail-width: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  height: 0 !important;
+}
+
+/* Watch page sidebar - hide compact video thumbnails */
+ytd-compact-video-renderer ytd-thumbnail,
+ytd-compact-radio-renderer ytd-thumbnail {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Channel pages and subscriptions */
+ytd-channel-video-player-renderer ytd-thumbnail,
+ytd-guide-entry-renderer img,
+ytd-moving-thumbnail-renderer {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Up Next Queue removal */
+#queue ytd-thumbnail,
+ytd-player #queue-panel ytd-thumbnail,
+#playlist-action-menu ytd-thumbnail,
+ytd-playlist-panel-video-renderer ytd-thumbnail,
+ytmusic-player-queue-item .thumbnail-image-wrapper,
+ytmusic-thumbnail-renderer,
+.ytp-miniplayer-ui ytd-thumbnail {
+  display: none !important;
+}
+
+/* End Screens - completely hide */
+.ytp-ce-element,
+.ytp-ce-video,
+.ytp-ce-channel,
+.ytp-ce-element-show,
+.ytp-endscreen-content,
+.ytp-autonav-endscreen-upnext-thumbnail,
+.ytp-fullscreen-grid-stills-container,
+.ytp-suggestion-set,
+.ytp-modern-videowall-still-image,
+.ytp-endscreen-element-title-container img,
+.ytp-endscreen-thumbnail {
+  display: none !important;
+
+}
+
+/* Fallback for any remaining YouTube thumbnails.
+   This block hides both standard <img> elements that load YouTube thumbnails
+   and custom elements that may display thumbnails from YouTube's CDN.
+   Grouped together to ensure all thumbnail images are removed regardless of source. */
+img[src*="ytimg.com"],
+img[src*="youtube.com/vi/"] {
+  display: none !important;
+}
+ytd-grid-video-renderer yt-img-shadow.empty {
+  display: none !important;
+}
+/* Hide empty YouTube image shadow elements */
+yt-img-shadow.empty {
+  display: none !important;
+}
+
+/* Moving previews */
+ytd-moving-thumbnail-renderer,
+.ytd-moving-thumbnail-renderer {
+  display: none !important;
+}
+
+/* Playlist dropdown menus */
+ytd-playlist-panel-video-renderer yt-img-shadow,
+.yt-simple-endpoint ytd-thumbnail,
+.yt-dropdown-menu ytd-thumbnail,
+.yt-formatted-string[role="button"] ytd-thumbnail,
+tp-yt-paper-item-body ytd-thumbnail {
+  display: none !important;
+}
+
+/* Embedded videos */
+html[data-embedded-experience="true"] ytd-thumbnail,
+[data-attached-to-an-iframe="true"] ytd-thumbnail {
+  display: none !important;
+}
+
+/* Clean video description text */
+#description,
+ytd-video-secondary-info-renderer {
+  margin-top: 8px !important;
+  padding: 12px !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 6px !important;
+}
+
+/* Better text truncation and readability */
+.yt-core-attributed-string,
+yt-formatted-string {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Improve button spacing */
+#menu yt-icon-button,
+.yt-spec-button-shape-next {
+  margin-inline-end: 4px !important;
+}
+
+/* Re-enable profile pictures and avatars */
+yt-user-profile-trigger-renderer-next img,
+yt-user-profile-trigger-renderer img,
+.yt-spec-avatar img,
+.yt-avatar img,
+ytd-channel-tagline-renderer img,
+ytd-channel-info img,
+ytd-comment-renderer .yt-user-avatar img,
+author-thumbnail img,
+ytd-video-owner-renderer img,
+.channel-header-profile-image img,
+ytd-channel-avatar-renderer img {
+  display: inline-block !important;
+  visibility: visible !important;
+  width: unset !important;
+  height: unset !important;
+}
